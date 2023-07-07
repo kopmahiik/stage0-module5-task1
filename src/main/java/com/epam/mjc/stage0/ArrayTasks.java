@@ -101,12 +101,19 @@ public class ArrayTasks {
     public int[] getOnlyPositiveNumbers(int[] arr) {
         int[] newArr = new int[arr.length];
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < 0) newArr[i] = 0;
-            else newArr[i] = arr[i];
-        }
+        int amountOfPositives = 0;
+        for (int i = 0, j = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                newArr[j] = arr[i];
+                amountOfPositives++;
+                j++;
+            }
 
-        return newArr;
+        }
+        int[] result = new int[amountOfPositives];
+        System.arraycopy(newArr, 0, result, 0, amountOfPositives);
+
+        return result;
     }
 
     /**
